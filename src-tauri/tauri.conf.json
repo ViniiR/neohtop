@@ -23,7 +23,7 @@
     "targets": ["app", "dmg"]
   },
   "productName": "NeoHtop",
-  "mainBinaryName": "NeoHtop",
+  "mainBinaryName": "neohtop",
   "version": "1.2.0",
   "identifier": "com.neohtop.dev",
   "plugins": {
