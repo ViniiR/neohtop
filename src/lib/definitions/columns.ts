@@ -1,5 +1,6 @@
 import type { Column } from "$lib/types";
 import { formatMemorySize } from "$lib/utils";
+import { UNITS } from "$lib/utils";
 
 export let column_definitions: Column[] = [
   { id: "name", label: "Process Name", visible: true, required: true },
@@ -20,7 +21,7 @@ export let column_definitions: Column[] = [
     id: "memory_usage",
     label: "RAM",
     visible: true,
-    format: (v) => (v / (1024 * 1024)).toFixed(1) + " MB",
+    format: (v) => (v / (1024 * 1024)).toFixed(1) + ` ${UNITS.mega}`,
   },
   {
     id: "virtual_memory",
@@ -35,7 +36,7 @@ export let column_definitions: Column[] = [
     format: (v) => {
       const readMB = (v[0] / (1024 * 1024)).toFixed(1);
       const writeMB = (v[1] / (1024 * 1024)).toFixed(1);
-      return `${readMB}/${writeMB} MB`;
+      return `${readMB}/${writeMB} ${UNITS.mega}`;
     },
   },
   { id: "ppid", label: "Parent PID", visible: false },

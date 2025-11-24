@@ -9,8 +9,8 @@ export const ASCII_ART = `
 
 export const APP_INFO = {
   name: "NeoHtop",
-  developer: "Abdenasser",
-  github: "https://github.com/Abdenasser/neohtop",
+  developer: "Abdenasser, ViniiR",
+  github: "https://github.com/ViniiR/neohtop",
   stack: ["Tauri", "Rust", "Svelte", "TypeScript"],
 };
 

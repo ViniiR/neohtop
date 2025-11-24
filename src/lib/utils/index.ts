@@ -7,9 +7,17 @@ export interface ProcessStatus {
   color: string;
 }
 
+export const UNITS = {
+  byte: "B",
+  kilo: "KiB",
+  mega: "MiB",
+  giga: "GiB",
+  tera: "TiB",
+} as const;
+
 export function formatMemorySize(bytes: number): string {
   const gb = bytes / (1024 * 1024 * 1024);
-  return `${gb.toFixed(1)} GB`;
+  return `${gb.toFixed(1)} ${UNITS.giga}`;
 }
 
 export function formatPercentage(value: number): string {
@@ -31,7 +39,7 @@ export function getUsageClass(percentage: number): string {
 }
 
 export function formatBytes(bytes: number): string {
-  const units = ["B", "KB", "MB", "GB", "TB"];
+  const units = [UNITS.byte, UNITS.kilo, UNITS.mega, UNITS.giga, UNITS.tera];
   let value = bytes;
   let unitIndex = 0;
 

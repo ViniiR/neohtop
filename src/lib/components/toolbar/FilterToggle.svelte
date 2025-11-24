@@ -3,6 +3,7 @@
   import { faFilter } from "@fortawesome/free-solid-svg-icons";
   import { overlayStore } from "$lib/stores/overlay";
   import { onDestroy } from "svelte";
+  import { UNITS } from "$lib/utils";
 
   export let filters: {
     cpu: { operator: string; value: number; enabled: boolean };
@@ -107,7 +108,7 @@
   function getFilterLabel(type: keyof typeof filters): string {
     const labels = {
       cpu: "CPU %",
-      ram: "RAM MB",
+      ram: `RAM ${UNITS.mega}`,
       runtime: "Runtime min",
       status: "Status",
     };
@@ -178,7 +179,7 @@
           <div class="filter-section">
             <span class="section-label">Performance:</span>
             <div class="filter-controls">
-              {#each [["cpu", "CPU %"], ["ram", "RAM MB"], ["runtime", "Runtime min"]] as [type, label]}
+              {#each [["cpu", "CPU %"], ["ram", `RAM ${UNITS.mega}`], ["runtime", "Runtime min"]] as [type, label]}
                 {@const filterKey = type as "cpu" | "ram" | "runtime"}
                 <div class="filter-control">
                   <button
@@ -223,7 +224,7 @@
                           : "60"}
                     />
                     {#if type === "ram"}
-                      <span class="unit">MB</span>
+                      <span class="unit">{UNITS.mega}</span>
                     {:else if type === "runtime"}
                       <span class="unit">min</span>
                     {:else}
