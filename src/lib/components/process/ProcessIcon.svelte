@@ -44,7 +44,21 @@
 
     const formattedName =
       cleanName.charAt(0).toUpperCase() + cleanName.slice(1);
-    const iconKey = `si${formattedName}`;
+    let iconKey = `si${formattedName}`;
+    switch (name) {
+      case "X":
+        iconKey = "siXdotorg";
+        break;
+      // case "node":
+      //   iconKey = "TODO:";
+      //   break;
+      // case "neovim":
+      //   iconKey = "TODO:";
+      //   break;
+      // case "*git": //FIXME:
+      //   iconKey = "TODO:";
+      //   break;
+    }
     let simpleIcon = SimpleIcons[iconKey as keyof typeof SimpleIcons];
 
     // Default icon if no match found
